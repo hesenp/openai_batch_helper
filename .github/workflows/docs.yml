@@ -27,7 +27,7 @@ jobs:
         run: sphinx-build -W -b html doc/ doc/_build/html
 
       - name: Trigger Read the Docs build
-        uses: readthedocs/action@v1
+        uses: readthedocs-actions/action@v1
         with:
           token: ${{ secrets.RTD_TOKEN }}
           project: openai-batch-helper
