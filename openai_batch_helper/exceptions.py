@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 class BatchHelperError(Exception):
-    """Base exception for batch_helper."""
+    """Base exception for openai_batch_helper."""
 
 
 class EmptyBatchError(BatchHelperError):

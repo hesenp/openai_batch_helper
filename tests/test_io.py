@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import os
-from batch_helper.io import append_jsonl, iter_jsonl, ensure_workdir
+from openai_batch_helper.io import append_jsonl, iter_jsonl, ensure_workdir
 
 
 def test_append_and_iter_jsonl(tmp_path):

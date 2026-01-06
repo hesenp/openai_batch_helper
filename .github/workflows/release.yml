@@ -26,10 +26,10 @@ jobs:
       - name: Lint
         run: |
           ruff check .
-          mypy batch_helper
+          mypy openai_batch_helper
 
       - name: Test
-        run: pytest --cov=batch_helper --cov-report=term-missing
+        run: pytest --cov=openai_batch_helper --cov-report=term-missing
 
       - name: Build distributions
         run: python -m build

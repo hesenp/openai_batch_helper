@@ -31,7 +31,7 @@ jobs:
       - name: Lint
         run: |
           ruff check .
-          mypy batch_helper
+          mypy openai_batch_helper
 
       - name: Run unit tests
-        run: pytest --cov=batch_helper --cov-report=term-missing
+        run: pytest --cov=openai_batch_helper --cov-report=term-missing

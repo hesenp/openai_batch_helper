@@ -4,8 +4,8 @@ import os
 import sys
 from datetime import datetime
 
-project = "batch-helper"
-author = "batch-helper maintainers"
+project = "openai-batch-helper"
+author = "hesenp"
 copyright = f"{datetime.now():%Y}, {author}"
 
 # Ensure package is importable when building docs

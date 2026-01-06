@@ -18,7 +18,7 @@ def _parse_metadata(items: list[str]) -> Dict[str, str]:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    p = argparse.ArgumentParser(prog="batch_helper", description="OpenAI Batch helper CLI")
+    p = argparse.ArgumentParser(prog="openai-batch-helper", description="OpenAI Batch helper CLI")
     p.add_argument("--input", required=True, help="Path to requests.jsonl")
     p.add_argument("--endpoint", default="/v1/chat/completions")
     p.add_argument("--out", default="results.jsonl", help="Path to write results.jsonl")

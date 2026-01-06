@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import argparse
-from batch_helper.cli import build_parser
+from openai_batch_helper.cli import build_parser
 
 
 def test_cli_parse_metadata_and_defaults():

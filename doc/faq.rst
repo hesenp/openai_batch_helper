@@ -28,7 +28,7 @@ Use the logging-based progress callback:
 .. code-block:: python
 
    import logging
-   from batch_helper import status_progress_logger
+   from openai_batch_helper import status_progress_logger
 
    logging.basicConfig(level=logging.INFO)
    job.wait_for_completion(on_update=status_progress_logger(heartbeat_seconds=30))

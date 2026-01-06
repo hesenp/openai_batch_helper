@@ -173,12 +173,12 @@ client.batches.cancel(batch.id)
 
 ## How this repo’s helper maps to the raw API steps
 
-Everything above is the manual OpenAI workflow. The `batch_helper` package in this
+Everything above is the manual OpenAI workflow. The `openai_batch_helper` package in this
 repository wraps those steps so you can focus on the JSONL lines and let the helper
 handle file uploads, batch creation, polling, and downloads.
 
 ```python
-from batch_helper import BatchHelper, status_progress_logger
+from openai_batch_helper import BatchHelper, status_progress_logger
 
 helper = BatchHelper(endpoint="/v1/responses", completion_window="24h")
 job = helper.init_job()
@@ -223,7 +223,7 @@ job.wait_for_completion(on_update=status_progress_logger())
 The package also exposes a CLI that translates directly to the six core steps:
 
 ```
-python -m batch_helper --input requests.jsonl --endpoint /v1/responses \
+python -m openai_batch_helper --input requests.jsonl --endpoint /v1/responses \
   --out results.jsonl --poll-seconds 5 --metadata project=demo env=dev \
   --completion-window 24h --progress
 ```

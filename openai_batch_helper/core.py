@@ -13,7 +13,7 @@ from .io import ensure_workdir, append_jsonl, iter_jsonl, write_stream_like
 TERMINAL_STATUSES = {"completed", "failed", "canceled", "expired"}
 
 # Module logger for internal notices
-_log = logging.getLogger("batch_helper.core")
+_log = logging.getLogger("openai_batch_helper.core")
 
 
 def status_progress_printer(
@@ -74,7 +74,7 @@ def status_progress_logger(
         >>> job.wait_for_completion(on_update=status_progress_logger())
     """
 
-    lg = logger or logging.getLogger("batch_helper.progress")
+    lg = logger or logging.getLogger("openai_batch_helper.progress")
     start = time.time()
     last_status: list[Optional[str]] = [None]
     last_emit: list[float] = [start - 10.0]
@@ -100,7 +100,7 @@ class BatchHelper:
     """Helper to manage the OpenAI Batch API.
 
     Example:
-        >>> from batch_helper import BatchHelper
+        >>> from openai_batch_helper import BatchHelper
         >>> helper = BatchHelper(endpoint="/v1/chat/completions", completion_window="24h")
         >>> job = helper.init_job()
         >>> _ = job.add_line({

@@ -3,12 +3,12 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "batch-helper"
+name = "openai-batch-helper"
 version = "0.1.0"
 description = "Tiny, production-friendly helper for the OpenAI Batch API"
 readme = { file = "README.md", content-type = "text/markdown" }
 requires-python = ">=3.9"
-authors = [{ name = "PressF AI" }]
+authors = [{ name = "hesenp" }]
 license = { file = "LICENSE" }
 keywords = ["openai", "batch", "cli", "api"]
 classifiers = [
@@ -31,12 +31,12 @@ dependencies = [
 [project.urls]
 Homepage = "https://github.com/hesenp/openai_batch_helper"
 Repository = "https://github.com/hesenp/openai_batch_helper"
-Documentation = "https://batch-helper.readthedocs.io"
+Documentation = "https://openai-batch-helper.readthedocs.io"
 Changelog = "https://github.com/hesenp/openai_batch_helper/blob/main/CHANGELOG.md"
 "Bug Tracker" = "https://github.com/hesenp/openai_batch_helper/issues"
 
 [project.scripts]
-batch-helper = "batch_helper.cli:main"
+openai-batch-helper = "openai_batch_helper.cli:main"
 
 [project.optional-dependencies]
 dev = [
@@ -58,8 +58,8 @@ docs = [
 ]
 
 [tool.setuptools]
-packages = ["batch_helper"]
-package-data = {"batch_helper" = ["py.typed"]}
+packages = ["openai_batch_helper"]
+package-data = {"openai_batch_helper" = ["py.typed"]}
 
 [tool.ruff]
 line-length = 100
@@ -68,7 +68,7 @@ line-length = 100
 python_version = "3.9"
 warn_unused_configs = true
 strict = true
-packages = ["batch_helper"]
+packages = ["openai_batch_helper"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -82,7 +82,7 @@ addopts = [
 ]
 
 [tool.coverage.run]
-source = ["batch_helper"]
+source = ["openai_batch_helper"]
 omit = [
     "tests/*",
     "setup.py",

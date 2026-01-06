@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from openai import OpenAI
 import logging
-from batch_helper import BatchHelper, status_progress_logger
+from openai_batch_helper import BatchHelper, status_progress_logger
 
 
 def main() -> None:

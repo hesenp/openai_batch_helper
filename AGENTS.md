@@ -1,6 +1,6 @@
 # AGENTS.md
 
-> Operator’s manual for AI coding agents (Codex/Copilot/ChatGPT) working on the **`batch-helper`** Python package.
+> Operator’s manual for AI coding agents (Codex/Copilot/ChatGPT) working on the **`openai-batch-helper`** (`openai_batch_helper` import) Python package.
 
 This file tells you what the project is, what to change, and how to do it safely, reproducibly, and in the repo’s style.
 
@@ -11,7 +11,7 @@ This file tells you what the project is, what to change, and how to do it safely
 Build and maintain a tiny, production-friendly Python helper around the OpenAI **Batch API** to hide boilerplate:
 
 ```python
-from batch_helper import BatchHelper
+from openai_batch_helper import BatchHelper
 
 helper = BatchHelper()
 job = helper.init_job()
@@ -39,12 +39,12 @@ Out of scope:
 ## 2) Repository Map
 
 ```
-batch-helper/
-├─ batch_helper/
+openai_batch_helper/
+├─ openai_batch_helper/
 │  ├─ __init__.py
 │  ├─ core.py           # BatchHelper, BatchJob, constants, exceptions
 │  ├─ io.py             # JSONL writers/readers, streaming-safe file ops
-│  ├─ cli.py            # `python -m batch_helper` entrypoint
+│  ├─ cli.py            # `python -m openai_batch_helper` entrypoint
 │  ├─ typing.py         # Typed dicts / Protocols for request lines
 │  └─ version.py
 ├─ examples/
@@ -65,7 +65,7 @@ batch-helper/
 
 ## 3) Public API (what to preserve)
 
-### `batch_helper.core`
+### `openai_batch_helper.core`
 
 ```python
 from __future__ import annotations
@@ -123,14 +123,14 @@ class BatchJob:
     ) -> Dict[str, Any]: ...
 ```
 
-### `batch_helper.io`
+### `openai_batch_helper.io`
 
 * Internal file utilities: safe writes, JSONL reader with backpressure, UTF-8 defaults.
 * **Do not** expose I/O helpers in the top-level public API.
 
 ### CLI
 
-* `python -m batch_helper --input requests.jsonl --endpoint /v1/chat/completions --out results.jsonl`
+* `python -m openai_batch_helper --input requests.jsonl --endpoint /v1/chat/completions --out results.jsonl`
 * Flags: `--poll-seconds`, `--metadata key=val`, `--completion-window 24h`
 * Prints final status to stdout; non-zero exit on failure.
 
@@ -167,8 +167,8 @@ Dev extras should include: `pytest`, `mypy`, `ruff`, `pytest-cov`, `types-reques
 
 ```bash
 pytest -q
-pytest -q --cov=batch_helper --cov-report=term-missing
-mypy batch_helper
+pytest -q --cov=openai_batch_helper --cov-report=term-missing
+mypy openai_batch_helper
 ruff check .
 ```
 
@@ -221,9 +221,9 @@ python examples/chat_batch_minimal.py
 
 ## 7) Tasks the Agent Can Perform
 
-* [ ] Implement `batch_helper/core.py` with the API above.
-* [ ] Implement `batch_helper/io.py` with safe JSONL read/write utilities.
-* [ ] Implement CLI (`batch_helper/cli.py`) using `argparse`.
+* [ ] Implement `openai_batch_helper/core.py` with the API above.
+* [ ] Implement `openai_batch_helper/io.py` with safe JSONL read/write utilities.
+* [ ] Implement CLI (`openai_batch_helper/cli.py`) using `argparse`.
 * [ ] Add docstrings with short examples for each public method.
 * [ ] Add unit tests:
 
@@ -254,11 +254,11 @@ python examples/chat_batch_minimal.py
 
 ## 9) Release Process (for agents)
 
-1. Bump version in `batch_helper/version.py` (SemVer).
+1. Bump version in `openai_batch_helper/version.py` (SemVer).
 2. Update `CHANGELOG.md` with highlights.
 3. Ensure:
 
-   * `pytest` passes with coverage ≥ 90% on `batch_helper/`.
+   * `pytest` passes with coverage ≥ 90% on `openai_batch_helper/`.
    * `mypy` + `ruff` pass.
 4. Build & check:
 
@@ -273,7 +273,7 @@ python examples/chat_batch_minimal.py
 ## 10) Example: Minimal Usage in README
 
 ```python
-from batch_helper import BatchHelper
+from openai_batch_helper import BatchHelper
 
 helper = BatchHelper(endpoint="/v1/chat/completions", completion_window="24h")
 job = helper.init_job()
@@ -349,7 +349,7 @@ print(job.map_by_custom_id())
 ## 13) Prompts You Can Use (for Codex)
 
 * “Implement the `BatchJob.download_result` method with support for both stream-like and bytes responses.”
-* “Create `batch_helper/cli.py` with argparse and a `main()` function, wiring flags to `BatchHelper` and `BatchJob`.”
+* “Create `openai_batch_helper/cli.py` with argparse and a `main()` function, wiring flags to `BatchHelper` and `BatchJob`.”
 * “Write unit tests in `tests/test_core.py` that mock the OpenAI client and cover the happy path and empty-batch error.”
 * “Add docstrings with short code examples for `BatchHelper.init_job` and `BatchJob.map_by_custom_id`.”
 

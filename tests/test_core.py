@@ -4,8 +4,8 @@ import os
 import json
 import pytest
 
-from batch_helper.core import BatchHelper
-from batch_helper.exceptions import EmptyBatchError, BatchNotCompletedError
+from openai_batch_helper.core import BatchHelper
+from openai_batch_helper.exceptions import EmptyBatchError, BatchNotCompletedError
 from .fixtures import FakeClient, Obj, FakeBatches
 
 
