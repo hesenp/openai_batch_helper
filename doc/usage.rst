@@ -6,7 +6,7 @@ Minimal example
 
 .. code-block:: python
 
-   from batch_helper import BatchHelper
+   from openai_batch_helper import BatchHelper
 
    helper = BatchHelper(endpoint="/v1/chat/completions", completion_window="24h")
    job = helper.init_job()
@@ -63,7 +63,7 @@ Embeddings example
 
 .. code-block:: python
 
-   from batch_helper import BatchHelper
+   from openai_batch_helper import BatchHelper
 
    helper = BatchHelper(endpoint="/v1/embeddings", completion_window="24h")
    job = helper.init_job()
@@ -91,7 +91,7 @@ Use the built-in ``status_progress_logger`` for status transitions and periodic 
 .. code-block:: python
 
    import logging
-   from batch_helper import status_progress_logger
+   from openai_batch_helper import status_progress_logger
 
    logging.basicConfig(level=logging.INFO)
    job.wait_for_completion(

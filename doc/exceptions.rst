@@ -1,7 +1,7 @@
 Exceptions
 ==========
 
-.. automodule:: batch_helper.exceptions
+.. automodule:: openai_batch_helper.exceptions
    :members:
    :undoc-members:
 

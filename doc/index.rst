@@ -1,5 +1,5 @@
-batch-helper documentation
-==========================
+openai-batch-helper documentation
+=================================
 
 Tiny, production-friendly helper for the OpenAI Batch API.
 
@@ -27,5 +27,5 @@ Contents
 Project links
 -------------
 
-- Source code: https://example.com
-- README: https://example.com
+- Source code: https://github.com/hesenp/openai_batch_helper
+- README: https://github.com/hesenp/openai_batch_helper/blob/main/README.md

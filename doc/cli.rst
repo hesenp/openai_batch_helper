@@ -5,7 +5,7 @@ Run a batch from an existing JSONL request file and print results path:
 
 .. code-block:: bash
 
-   python -m batch_helper --input requests.jsonl \
+   python -m openai_batch_helper --input requests.jsonl \
      --endpoint /v1/chat/completions \
      --out results.jsonl \
      --poll-seconds 5 \

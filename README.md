@@ -1,21 +1,21 @@
 # OpenAI Batch Helper
 
 [![Tests](https://github.com/hesenp/openai_batch_helper/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/hesenp/openai_batch_helper/actions/workflows/tests.yml)
-[![PyPI](https://img.shields.io/pypi/v/batch-helper.svg)](https://pypi.org/project/batch-helper/)
-[![Docs](https://readthedocs.org/projects/batch-helper/badge/?version=latest)](https://batch-helper.readthedocs.io/en/latest/?badge=latest)
+[![PyPI](https://img.shields.io/pypi/v/openai-batch-helper.svg)](https://pypi.org/project/openai-batch-helper/)
+[![Docs](https://readthedocs.org/projects/openai-batch-helper/badge/?version=latest)](https://openai-batch-helper.readthedocs.io/en/latest/?badge=latest)
 
 Tiny, production-friendly helper for the OpenAI Batch API.
 
 ## Installation
 
 ```
-pip install batch-helper
+pip install openai-batch-helper
 ```
 
 ## Minimal Example
 
 ```python
-from batch_helper import BatchHelper
+from openai_batch_helper import BatchHelper
 
 helper = BatchHelper(endpoint="/v1/chat/completions", completion_window="24h")
 job = helper.init_job()
@@ -55,15 +55,15 @@ job.download_result()
 ## CLI
 
 ```
-python -m batch_helper --input requests.jsonl --endpoint /v1/chat/completions --out results.jsonl \
+python -m openai_batch_helper --input requests.jsonl --endpoint /v1/chat/completions --out results.jsonl \
   --poll-seconds 5 --metadata project=demo env=dev --completion-window 24h
 ```
 
-The package also installs a console script so you can run `batch-helper` with the same flags.
+The package also installs a console script so you can run `openai-batch-helper` with the same flags, or `python -m openai_batch_helper ...`.
 
 ## Documentation
 
-- Latest docs: https://batch-helper.readthedocs.io
+- Latest docs: https://openai-batch-helper.readthedocs.io
 - Build locally:
 
 ```
@@ -76,7 +76,7 @@ sphinx-build -b html doc/ doc/_build/html
 ```
 pip install -e .[dev]
 pytest -q
-mypy batch_helper
+mypy openai_batch_helper
 ruff check .
 ```
 
@@ -94,7 +94,7 @@ Refer to `AGENTS.md` and `BATCH_API.md` for design and API background.
 
 - Tests: GitHub Actions runs lint + unit tests on pushes/PRs (`.github/workflows/tests.yml`).
 - Releases: Publishing is automated from GitHub releases via `.github/workflows/release.yml`; set `PYPI_API_TOKEN` secret in the repo to upload to PyPI.
-- Docs: `.github/workflows/docs.yml` builds docs locally and triggers Read the Docs; set `RTD_TOKEN` secret and ensure the RTD project slug is `batch-helper`.
+- Docs: `.github/workflows/docs.yml` builds docs locally and triggers Read the Docs; set `RTD_TOKEN` secret and ensure the RTD project slug is `openai-batch-helper`.
 
 ## Examples
 

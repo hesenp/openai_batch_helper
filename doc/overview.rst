@@ -1,10 +1,10 @@
 Overview
 ========
 
-What is batch-helper?
----------------------
+What is openai-batch-helper?
+----------------------------
 
-``batch-helper`` is a tiny, production-friendly Python wrapper around the
+``openai-batch-helper`` is a tiny, production-friendly Python wrapper around the
 OpenAI Batch API. It removes boilerplate around building request JSONL files,
 submitting a batch, polling for completion, downloading the output file, and
 parsing results back to a convenient mapping keyed by your ``custom_id``.
@@ -57,7 +57,7 @@ The CLI mirrors the library flow for existing JSONL input files:
 
 .. code-block:: bash
 
-   python -m batch_helper \
+   python -m openai_batch_helper \
      --input requests.jsonl \
      --endpoint /v1/chat/completions \
      --out results.jsonl \
