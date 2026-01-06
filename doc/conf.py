@@ -20,7 +20,7 @@ extensions = [
 ]
 
 intersphinx_mapping = {
-    "python": ("https://docs.python.org/3", {}),
+    "python": ("https://docs.python.org/3", None),
 }
 
 autodoc_typehints = "description"
