@@ -33,7 +33,7 @@ Homepage = "https://github.com/hesenp/openai_batch_helper"
 Repository = "https://github.com/hesenp/openai_batch_helper"
 Documentation = "https://batch-helper.readthedocs.io"
 Changelog = "https://github.com/hesenp/openai_batch_helper/blob/main/CHANGELOG.md"
-Bug Tracker = "https://github.com/hesenp/openai_batch_helper/issues"
+"Bug Tracker" = "https://github.com/hesenp/openai_batch_helper/issues"
 
 [project.scripts]
 batch-helper = "batch_helper.cli:main"
