@@ -1,7 +1,7 @@
 openai-batch-helper documentation
 =================================
 
-Tiny, production-friendly helper for the OpenAI Batch API.
+Batching can cut OpenAI usage costs by roughly 50%, but juggling JSONL files, uploads, and polling is tedious. This guide shows how ``openai-batch-helper`` keeps the batch flow tidy, typed, and production-friendly.
 
 Contents
 --------

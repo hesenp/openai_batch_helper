@@ -1,0 +1,59 @@
+:root {
+  --obh-accent: #e02424;
+  --obh-surface: rgba(255, 255, 255, 0.75);
+  --obh-muted: rgba(31, 32, 36, 0.7);
+}
+
+:root[data-theme="dark"] {
+  --obh-accent: #ff6b6b;
+  --obh-surface: rgba(17, 18, 23, 0.85);
+  --obh-muted: rgba(244, 245, 247, 0.7);
+}
+
+body {
+  background: linear-gradient(180deg, rgba(17, 18, 23, 0.04), rgba(17, 18, 23, 0));
+}
+
+:root[data-theme="dark"] body {
+  background: linear-gradient(180deg, rgba(17, 18, 23, 0.6), rgba(17, 18, 23, 0.35));
+}
+
+main .admonition,
+main .note,
+main .tip,
+main .warning {
+  border-left: 4px solid var(--obh-accent);
+  background: var(--obh-surface);
+  color: var(--obh-muted);
+}
+
+main .admonition-title {
+  color: var(--obh-accent);
+  font-weight: 700;
+}
+
+main .highlight,
+main pre {
+  border: 1px solid rgba(224, 36, 36, 0.14);
+  border-radius: 10px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+}
+
+:root[data-theme="dark"] main .highlight,
+:root[data-theme="dark"] main pre {
+  border-color: rgba(255, 107, 107, 0.2);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.35);
+}
+
+a {
+  text-decoration-color: rgba(224, 36, 36, 0.45);
+}
+
+a:hover {
+  color: var(--obh-accent);
+  text-decoration-color: var(--obh-accent);
+}
+
+.toc-tree li a {
+  font-weight: 600;
+}
