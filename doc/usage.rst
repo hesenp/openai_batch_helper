@@ -1,87 +1,57 @@
 Usage
 =====
 
-Minimal example
----------------
+Quickstart (chat with ``add_task``)
+-----------------------------------
 
 .. code-block:: python
 
-   from openai_batch_helper import BatchHelper
+   from openai_batch_helper import BatchHelper, status_progress_logger
 
    helper = BatchHelper(endpoint="/v1/chat/completions", completion_window="24h")
    job = helper.init_job()
 
-   job.add_lines([
-       {
-           "custom_id": "t1",
-           "method": "POST",
-           "url": "/v1/chat/completions",
-           "body": {
-               "model": "gpt-4o-mini",
-               "messages": [
-                   {"role": "system", "content": "Be concise."},
-                   {"role": "user", "content": "Explain idempotency in one sentence."}
-               ]
-           }
-       }
-   ])
-
-   (job
-       .submit_file()
-       .submit_batch_job(metadata={"project": "demo"})
-       .wait_for_completion(poll_seconds=5))
-
-   out_path = job.download_result()
-   print("Results file:", out_path)
-   print(job.map_by_custom_id())
-
-Convenience: add_task
----------------------
-
-Reduce boilerplate by letting the helper build the per-line JSON:
-
-.. code-block:: python
-
-   # url defaults to the helper's endpoint (here: /v1/chat/completions)
    job.add_task(
        "t1",
        body={
            "model": "gpt-4o-mini",
-           "messages": [{"role": "user", "content": "Hello"}],
+           "messages": [
+               {"role": "system", "content": "Be concise."},
+               {"role": "user", "content": "Explain idempotency in one sentence."},
+           ],
+       },
+   )
+   job.add_task(
+       "t2",
+       body={
+           "model": "gpt-4o-mini",
+           "messages": [
+               {"role": "system", "content": "Be concise."},
+               {"role": "user", "content": "List 3 benefits of unit tests."},
+           ],
        },
    )
 
-   # Explicit URL for embeddings
+   (job
+    .submit_file()
+    .submit_batch_job(metadata={"project": "demo"})
+    .wait_for_completion(poll_seconds=5.0, on_update=status_progress_logger()))
+
+   print(job.download_result())
+   print(job.map_by_custom_id())
+
+Add embeddings tasks
+--------------------
+
+Use ``add_task`` with an explicit URL when targeting embeddings:
+
+.. code-block:: python
+
    job.add_task(
        "emb-1",
        "/v1/embeddings",
        body={"model": "text-embedding-3-small", "input": "alpha"},
    )
-
-Embeddings example
-------------------
-
-.. code-block:: python
-
-   from openai_batch_helper import BatchHelper
-
-   helper = BatchHelper(endpoint="/v1/embeddings", completion_window="24h")
-   job = helper.init_job()
-
-   for i, text in enumerate(["alpha", "beta", "gamma"], start=1):
-       job.add_line({
-           "custom_id": f"emb-{i}",
-           "method": "POST",
-           "url": "/v1/embeddings",
-           "body": {"model": "text-embedding-3-small", "input": text},
-       })
-
-   (job.submit_file()
-       .submit_batch_job()
-       .wait_for_completion(poll_seconds=5))
-
-   job.download_result()
-   vectors = job.map_by_custom_id()  # dict of custom_id -> embedding vector
 
 Progress logging
 ----------------
