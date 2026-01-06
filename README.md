@@ -4,7 +4,7 @@
 [![PyPI](https://img.shields.io/pypi/v/openai_batch_helper.svg)](https://pypi.org/project/openai_batch_helper/)
 [![Docs](https://readthedocs.org/projects/openai-batch-helper/badge/?version=latest)](https://openai-batch-helper.readthedocs.io/en/latest/?badge=latest)
 
-Running the OpenAI Batch API can cut per-request costs by roughly 50%. But managing JSONL uploads, downloads, and polling quickly turns messy. This helper keeps the batch flow tidy, typed, and production-friendly.
+Running the OpenAI Batch API can cut per-request costs by roughly 50%. But the process through the default OpenAI Python SDK is very cumbersome. It requires users to  manage JSONL uploads, poll for status updates, download results in JSONL format again, and parse them. This quickly turns messy. The package `openai_batch_helper` helper keeps the batch flow tidy, typed, and production-friendly.
 
 ## Install
 
