@@ -90,6 +90,12 @@ twine check dist/*
 
 Refer to `AGENTS.md` and `BATCH_API.md` for design and API background.
 
+## CI/CD hooks
+
+- Tests: GitHub Actions runs lint + unit tests on pushes/PRs (`.github/workflows/tests.yml`).
+- Releases: Publishing is automated from GitHub releases via `.github/workflows/release.yml`; set `PYPI_API_TOKEN` secret in the repo to upload to PyPI.
+- Docs: `.github/workflows/docs.yml` builds docs locally and triggers Read the Docs; set `RTD_TOKEN` secret and ensure the RTD project slug is `batch-helper`.
+
 ## Examples
 
 - `examples/chat_batch_minimal.py` — Chat batch using `add_line` in a loop.
