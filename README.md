@@ -1,7 +1,7 @@
 # OpenAI Batch Helper
 
 [![Tests](https://github.com/hesenp/openai_batch_helper/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/hesenp/openai_batch_helper/actions/workflows/tests.yml)
-[![PyPI](https://img.shields.io/pypi/v/openai-batch-helper.svg)](https://pypi.org/project/openai_batch_helper/)
+[![PyPI](https://img.shields.io/pypi/v/openai_batch_helper.svg)](https://pypi.org/project/openai_batch_helper/)
 [![Docs](https://readthedocs.org/projects/openai-batch-helper/badge/?version=latest)](https://openai-batch-helper.readthedocs.io/en/latest/?badge=latest)
 
 Tiny, production-friendly helper for the OpenAI Batch API.
