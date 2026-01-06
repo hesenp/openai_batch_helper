@@ -1,8 +1,16 @@
 # OpenAI Batch Helper
 
-[![Unit Tests](https://github.com/PressF-AI/openai_batch_helper/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/PressF-AI/openai_batch_helper/actions/workflows/test.yml)
+[![Tests](https://github.com/hesenp/openai_batch_helper/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/hesenp/openai_batch_helper/actions/workflows/tests.yml)
+[![PyPI](https://img.shields.io/pypi/v/batch-helper.svg)](https://pypi.org/project/batch-helper/)
+[![Docs](https://readthedocs.org/projects/batch-helper/badge/?version=latest)](https://batch-helper.readthedocs.io/en/latest/?badge=latest)
 
 Tiny, production-friendly helper for the OpenAI Batch API.
+
+## Installation
+
+```
+pip install batch-helper
+```
 
 ## Minimal Example
 
@@ -51,6 +59,18 @@ python -m batch_helper --input requests.jsonl --endpoint /v1/chat/completions --
   --poll-seconds 5 --metadata project=demo env=dev --completion-window 24h
 ```
 
+The package also installs a console script so you can run `batch-helper` with the same flags.
+
+## Documentation
+
+- Latest docs: https://batch-helper.readthedocs.io
+- Build locally:
+
+```
+pip install -e .[docs]
+sphinx-build -b html doc/ doc/_build/html
+```
+
 ## Development
 
 ```
@@ -58,6 +78,14 @@ pip install -e .[dev]
 pytest -q
 mypy batch_helper
 ruff check .
+```
+
+To cut a PyPI release:
+
+```
+python -m build
+twine check dist/*
+# then twine upload dist/*
 ```
 
 Refer to `AGENTS.md` and `BATCH_API.md` for design and API background.
