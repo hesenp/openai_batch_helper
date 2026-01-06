@@ -1,0 +1,36 @@
+from __future__ import annotations
+
+import logging
+from openai import OpenAI
+from batch_helper import BatchHelper, status_progress_logger
+
+
+def main() -> None:
+    logging.basicConfig(level=logging.INFO)
+
+    client = OpenAI()
+    helper = BatchHelper(client, endpoint="/v1/embeddings", completion_window="24h")
+    job = helper.init_job()
+
+    for i, text in enumerate(["alpha", "beta", "gamma"], start=1):
+        job.add_task(
+            f"emb-{i}",
+            body={
+                "model": "text-embedding-3-small",
+                "input": text,
+            },
+        )
+
+    (job
+     .submit_file()
+     .submit_batch_job(metadata={"project": "demo-emb"})
+     .wait_for_completion(poll_seconds=5.0, on_update=status_progress_logger()))
+
+    out_path = job.download_result()
+    print("Results file:", out_path)
+    print(job.map_by_custom_id())
+
+
+if __name__ == "__main__":
+    main()
+

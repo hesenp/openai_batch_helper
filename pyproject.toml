@@ -1,0 +1,71 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "batch-helper"
+version = "0.1.0"
+description = "Tiny, production-friendly helper for the OpenAI Batch API"
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [{ name = "Your Name" }]
+license = { text = "MIT" }
+dependencies = [
+    # Keep minimal. Runtime dependency on openai is optional at import-time.
+    "openai>=1.0.0",
+]
+
+[project.urls]
+Homepage = "https://example.com"
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "mypy",
+    "ruff",
+    "types-requests",
+    "bandit",
+    "safety",
+]
+
+[tool.setuptools]
+packages = ["batch_helper"]
+package-data = {"batch_helper" = ["py.typed"]}
+
+[tool.ruff]
+line-length = 100
+
+[tool.mypy]
+python_version = "3.9"
+warn_unused_configs = true
+strict = true
+packages = ["batch_helper"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+addopts = [
+    "--strict-markers",
+    "--disable-warnings",
+    "-v",
+]
+
+[tool.coverage.run]
+source = ["batch_helper"]
+omit = [
+    "tests/*",
+    "setup.py",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+]
+
